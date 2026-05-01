@@ -1,0 +1,143 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: var(--border-radius-md); }
+  .badge-purple { background: #EEEDFE; color: #3C3489; }
+  .badge-teal { background: #E1F5EE; color: #085041; }
+  .badge-coral { background: #FAECE7; color: #712B13; }
+  .prompt-number { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .prompt-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.25rem; }
+  .prompt-subtitle { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1.25rem; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; margin-top: 1rem; }
+  .prompt-box { background: var(--color-background-tertiary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 1rem 1.25rem; font-size: 13.5px; line-height: 1.75; color: var(--color-text-primary); font-family: var(--font-mono); white-space: pre-wrap; word-break: break-word; }
+  .version-tabs { display: flex; gap: 8px; margin-bottom: 0.75rem; }
+  .tab { font-size: 12px; padding: 5px 14px; border-radius: 999px; border: 0.5px solid var(--color-border-secondary); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-secondary); }
+  .tab.active { background: #EEEDFE; color: #3C3489; border-color: #AFA9EC; font-weight: 500; }
+  .tools-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.75rem; }
+  .tool-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 5px 10px; border-radius: 999px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-primary); }
+  .tool-pill.best { background: #E1F5EE; color: #085041; border-color: #5DCAA5; font-weight: 500; }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.25rem 0; }
+  .output-box { background: #E1F5EE; border: 0.5px solid #5DCAA5; border-radius: var(--border-radius-md); padding: 1rem 1.25rem; font-size: 13px; line-height: 1.7; color: #085041; }
+  .tip-box { background: #FAEEDA; border-left: 3px solid #EF9F27; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 0.75rem 1rem; font-size: 13px; color: #633806; margin-top: 1rem; line-height: 1.6; }
+  .copy-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; margin-top: 0.75rem; }
+  .copy-btn:hover { background: var(--color-background-secondary); }
+  .next-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 8px 16px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-primary); cursor: pointer; margin-top: 0.5rem; }
+  .next-btn:hover { background: var(--color-background-secondary); }
+  .new-badge { display: inline-flex; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 999px; background: #EEEDFE; color: #3C3489; margin-left: 8px; vertical-align: middle; }
+</style>
+
+<div style="padding: 1rem 0;">
+  <div class="card">
+    <div class="prompt-number">Prompt 03 / 30 — Content & Posts</div>
+    <div class="prompt-title">Viral Hook Generator <span class="new-badge">2 versions</span></div>
+    <div class="prompt-subtitle">Your goal: craft the first line that stops the scroll — because nobody reads past a weak hook.</div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem;">
+      <span class="badge badge-purple">Copywriting</span>
+      <span class="badge badge-teal">Virality</span>
+      <span class="badge badge-coral">Attention</span>
+    </div>
+
+    <div class="section-label">Choose your version</div>
+    <div class="version-tabs">
+      <div class="tab active" id="tab-quick" onclick="showVersion('quick')">Quick — 3 questions</div>
+      <div class="tab" id="tab-adv" onclick="showVersion('adv')">Advanced — Full power</div>
+    </div>
+
+    <div id="version-quick">
+      <div class="section-label">The Prompt — Quick</div>
+      <div class="prompt-box" id="prompt-quick">Your goal is to write scroll-stopping opening hooks that make people unable to keep scrolling.
+
+Ask me only these 3 questions, one at a time:
+
+1. What is the topic or product you're posting about?
+2. Who is your target audience? (be specific)
+3. What emotion do you want to trigger? (curiosity / urgency / fear of missing out / inspiration)
+
+Then generate 10 powerful hooks in these styles:
+— Bold claim
+— Surprising statistic
+— Relatable pain point
+— Provocative question
+— Controversial opinion
+
+Format each as:
+[Style] → "[Hook text]"
+
+Make every hook under 15 words. No fluff. No intros.</div>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('prompt-quick').innerText).then(() => { this.innerText = '✓ Copied'; setTimeout(() => this.innerText = 'Copy prompt', 1500); })">Copy prompt</button>
+    </div>
+
+    <div id="version-adv" style="display:none;">
+      <div class="section-label">The Prompt — Advanced</div>
+      <div class="prompt-box" id="prompt-adv">Your goal is to create hooks so powerful they stop the scroll instantly and force the audience to keep reading — no matter the platform.
+
+Ask me these questions one by one and wait for each answer:
+
+1. What is the topic, product, or message of your post?
+2. Who is your exact target audience? (age, pain point, desire)
+3. What platform is this for? (Instagram / TikTok / LinkedIn / Facebook)
+4. What emotional trigger fits best? (urgency / curiosity / social proof / fear / aspiration)
+5. What is the biggest misconception your audience has about this topic?
+6. What transformation does your audience dream about?
+
+Then generate 15 hooks across these styles:
+
+— Bold claim: States something surprising as fact
+— Pain-point mirror: Reflects their exact frustration back at them
+— Surprising statistic: Real or hypothetical number that shocks
+— Provocative question: Makes them question what they believed
+— Controversial opinion: Disagrees with common advice
+— Social proof tease: Hints at results others got
+— Curiosity gap: Promises a reveal without giving it away
+
+For each hook:
+✦ Write the hook (max 15 words)
+✦ Name the emotional trigger used
+✦ Rate virality potential: Low / Medium / High / Explosive
+
+At the end, highlight your Top 3 picks and explain why they will outperform the rest.
+
+Include emotional layers: urgency, curiosity, and social proof where relevant.
+Adapt tone and length to the platform specified.</div>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('prompt-adv').innerText).then(() => { this.innerText = '✓ Copied'; setTimeout(() => this.innerText = 'Copy prompt', 1500); })">Copy prompt</button>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">Best tools for this prompt</div>
+    <div class="tools-row">
+      <span class="tool-pill best">★ ChatGPT-4o — Best for creative hook generation</span>
+      <span class="tool-pill">Claude — Best for tone accuracy</span>
+      <span class="tool-pill">Gemini — Fast brainstorming</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">Sample output preview</div>
+    <div class="output-box">
+      <strong>Bold claim →</strong> "You don't have a sales problem. You have a hook problem." — Trigger: Curiosity — Virality: Explosive<br><br>
+      <strong>Pain-point mirror →</strong> "Posting every day. Zero followers. Sound familiar?" — Trigger: Empathy — Virality: High<br><br>
+      <strong>Curiosity gap →</strong> "The reason your content flops has nothing to do with quality." — Trigger: Curiosity — Virality: Explosive<br><br>
+      <em style="font-size: 12px; opacity: 0.8;">+ 12 more hooks + Top 3 picks with explanation</em>
+    </div>
+
+    <div class="tip-box">
+      Pro tip: Run this prompt, pick your top hook, then feed it directly into Prompt 01 (Product Announcement Post) as your opening line. The two prompts work together as a system.
+    </div>
+
+    <hr class="divider">
+
+    <button class="next-btn" onclick="sendPrompt('كمل Prompt 04 من قسم المحتوى والبوستات بنفس الشكل ونفس الـ 2 versions')">Generate Prompt 04 ↗</button>
+  </div>
+</div>
+
+<script>
+function showVersion(v) {
+  document.getElementById('version-quick').style.display = v === 'quick' ? 'block' : 'none';
+  document.getElementById('version-adv').style.display = v === 'adv' ? 'block' : 'none';
+  document.getElementById('tab-quick').className = 'tab' + (v === 'quick' ? ' active' : '');
+  document.getElementById('tab-adv').className = 'tab' + (v === 'adv' ? ' active' : '');
+}
+</script>
